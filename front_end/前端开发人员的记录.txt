@@ -1,1 +1,2 @@
 有什么需要记录的，就写在这个文档里。
+1.更新患者端的页面，主要包括mybed、myorder、patientcard、patienthome、patientlist、patientuser、orderoperate和login等页面
