@@ -13,5 +13,5 @@ public interface AdminUserService {
      * @return 返回管理员登录信息
      */
 
-
+    AdminUserVo login(int aId, String aPassword);
 }
