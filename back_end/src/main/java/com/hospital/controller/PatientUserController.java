@@ -26,8 +26,6 @@ public class PatientUserController {
 
     private final PatientUserService patientUserService;
 
-    private final OrderService orderService;
-
     /**
      * 病患登录
      *
@@ -68,25 +66,13 @@ public class PatientUserController {
      * @param arId  排班id
      * @return 结果
      */
-    @RequestMapping("addOrder")
-    public R<Boolean> addOrder(Orders order, String arId) {
-        if (BooleanUtils.isTrue(orderService.addOrder(order, arId))) {
-            return R.ok("挂号成功");
-        }
-
-        return R.error("挂号失败, 当前时间段存在还未诊断的挂号单");
-    }
-
+    
     /**
      * 查询病患挂号
      *
      * @param pId 病患id
      * @return 挂号信息
      */
-    @RequestMapping("findOrderByPid")
-    public R<List<Orders>> findOrderByPid(@RequestParam(value = "pId") Integer pId) {
-        return R.ok(orderService.findOrderByPid(pId));
-    }
 
     /**
      * 添加病患
@@ -110,12 +96,6 @@ public class PatientUserController {
      * @param oId      挂号单id
      * @throws Exception 异常
      */
-    @GetMapping("/pdf")
-    public void exportPDF(HttpServletResponse response, Integer oId) throws Exception {
-        Orders order = orderService.findOrderByOid(oId);
-        //导出pdf
-        PdfUtil.exportPatientOrder(response, order);
-    }
 
     /**
      * 统计患者年龄分布
